@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="enter city name" spellcheck="false">
+                <button><img src="images/search.png"></button>
+            </div>
+            <div class="weather">
+                <img src="images/rain.png" class="weather-icon">
+                <h1 class="temp">22°C</h1>
+                <h2 class="city">Pune</h2>
+                <div class="details">
+                    <div class="col">
+                        <img src="images/humidity.png">
+                        <div>
+                            <p class="humidity">50%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="images/wind.png">
+                        <div>
+                            <p class="wind">15 km/h</p>
+                            <p>Wind Speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+
+            const searchBox = document.querySelector(".search input");
+            const searchBtn = document.querySelector(".search button");
+
+            async function checkWeather(city){
+                const response = await fetch(apiUrl + city + '&appid=c048b19fdf9fa574526e60ac2651a57b&units=metric'); //wait until it fetched and store it in const response
+                var data = await response.json(); //convert response to JSON object format and store in a variable called data
+
+                console.log(data);
+
+                document.querySelector(".city").innerHTML = data.name;
+                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+                document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+                document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+              var weatherName = data.weather[0].main;  //we collect weather data like 'Clouds' , 'Clear', 'Rainy'.. etc and store inside weatherNow varaible
+              document.querySelector(".weather-icon").src = "images/"+weatherName+".png"; //weathers images name must have same name as in data so that we can concatenate the name while writing src path
+
+              document.querySelector(".weather").style.display = "block"; //(Optional) - to hide weather info before a search, we need to change css display:none to display:block
+            }
+
+            searchBtn.addEventListener("click", function(){  
+                checkWeather(searchBox.value);              //when searchBtn is triigered, checkWeather function will run with searchBox.value passed on it so that url can update with updated city name
+            });
+
+        </script>
+    </body>
+</html>
