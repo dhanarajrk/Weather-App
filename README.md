@@ -39,5 +39,5 @@ This project uses the OpenWeather API. To run the app, you'll need to sign up fo
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/yourusername/weather-app/issues) if you want to contribute.
+Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/dhanarajrk/weather-app/issues) if you want to contribute.
 
