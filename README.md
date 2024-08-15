@@ -2,7 +2,7 @@
 
 A simple weather application that allows users to search for weather information by city name. The app displays temperature in Celsius, humidity, and wind speed.
 
-![Screenshot](/images/screenshot.png)
+![Screenshot](/images/screenshot.jpg)
 
 ## Features
 
